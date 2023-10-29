@@ -8,18 +8,10 @@
 
 /* Model */
 
-
 import Foundation
 
 
 struct MemoryGame<CardContent> {
-    
-    struct Card {
-        var isFaceUp = false
-        var isMatched = false
-        let content: CardContent
-    }
-    
     private(set) var cards: Array<Card>
     
     init(numberOfPairOfCards: Int, cardContentFactory: (Int) -> CardContent) {
@@ -34,5 +26,16 @@ struct MemoryGame<CardContent> {
     
     func choose(_ card: Card) {
         
+    }
+    
+    mutating func shuffle() {
+        cards.shuffle()
+        print(cards)
+    }
+    
+    struct Card {
+        var isFaceUp = true
+        var isMatched = false
+        let content: CardContent
     }
 }
